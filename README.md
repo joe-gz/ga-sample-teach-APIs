@@ -97,6 +97,6 @@ for (var i=0;i<response.Search.length;i++) {
 
 We have a movie search!
 
-## You Do
+## You Do (2-3 mins)
 Take a few minutes to play around with the url.  Go back to the OMDB site and see what else you can do with the url.  Specifically, is there a better way to search by an actual title? Can you change the url and the corresponding code in the ```movie``` function to return the information for "Star Wars: The Force Awakens"?
 **hint, instead of "searching" in the url, try finding the movie "title"
