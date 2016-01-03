@@ -39,7 +39,7 @@ We are going to use jQuery here, as it provides a library to make an "AJAX" (Asy
 **Let's get this set up**
 
 ```javascript
-// initial API call
+// initial API call on click
 $(document).ready( function() {
  $(".search").click(function(){
    apiCall();
@@ -56,12 +56,12 @@ var movie = function(response) {
 }
 ```
 
-As you can see, we have a couple empty functions right now. ```apiCall``` will be the function through whcih we create the AJAX request, while ```movie``` while append the returned data to the browser.
+As you can see, we have a couple empty functions right now. ```apiCall``` will be the function through which we create the AJAX request, while ```movie``` while append the returned data to the browser. So, how do we go about setting up the AJAX request? Add the javascript below to the ```apiCall```.
 
 ```javascript
 // get value from search input field
 var keyword = $("input[name='keyword']").val();
-var url = "https://www.omdbapi.com/?s="+keyword
+var url = **Add url here!
 $.ajax({
   url: url,
   type: "GET",
@@ -71,11 +71,20 @@ $.ajax({
   // call movie function below to append movie titles
   movie(response);
 }).fail ( function (){
-  console.log("Failure");
+  console.log("fail");
 }).always( function(){
-  console.log("Something's happening");
+  console.log("Something happens");
 })
 ```
+Nothing actually happens still, right? But take a look at the syntax, it's pretty straight forward! All we need to pass in is the url, the type of request, and the type of data to be returned.  Then, the request takes three promises, ```.done```, ```.fail```,```.always```.  These return functions based on the outcome of the request.  The first will run if the request is successful.  The second will run if it fails, and the last will run in both circumstances, so there is a response. You will notice though, that we haven't included an actual url! Most API urls are fairly similar, but there are often subtle differences.  Let's go to the OMDB api page, http://www.omdbapi.com/, and add in the url.
+```javascript
+"https://www.omdbapi.com/?s="+keyword
+```
+
+Great! So now let's search for a movie (let's try "Star Wars") and see what shows up in the console.  It's an array of Star Wars movies! But where is that coming from exactly?
+The JSON file returned by OMDB returns an array titled "Search".  So, the response we get from ```.done``` can be parsed by including the ".Search" after.
+
+All we need to do now is append the data to the browser on searching.  The for-loop will loop through the response.Search and append each object within that response to the body of the browser.
 
 ```javascript
 for (var i=0;i<response.Search.length;i++) {
@@ -85,3 +94,9 @@ for (var i=0;i<response.Search.length;i++) {
   $('.movie-title').append("<img src = '"+response.Search[i].Poster+"'>")
 }
 ```
+
+We have a movie search!
+
+## You Do
+Take a few minutes to play around with the url.  Go back to the OMDB site and see what else you can do with the url.  Specifically, is there a better way to search by an actual title? Can you change the url and the corresponding code in the ```movie``` function to return the information for "Star Wars: The Force Awakens"?
+**hint, instead of "searching" in the url, try finding the movie "title"
