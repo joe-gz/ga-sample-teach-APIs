@@ -23,7 +23,7 @@ As developers, we can create our own APIs, connect to external APIs, or both!
 - Oh wait, forget that last one :(
   Some companies choose to keep their data private!
 
-## Using an External API
+## Using an External API with jQuery
 
 Let's get started actually building an app that utilizes an external API where the data are called through AJAX requests in Javascript. For this, we're going to use the OMDB API to build a simple movie search tool.  Fork and clone down this repo and open it up in Atom.
 
@@ -55,18 +55,18 @@ var movie = function(response) {
 }
 ```
 
-As you can see, we have a couple empty functions right now. ```apiCall``` will be the function through which we create the AJAX request, while ```movie``` will be used to append the returned data to the browser. So, how do we go about setting up the AJAX request? Let's the code below to ```apiCall```.
+As you can see, we have a couple empty functions right now. ```apiCall``` will be the function through which we create the AJAX request, while ```movie``` will be used to append the returned data to the browser. So, how do we go about setting up the AJAX request? Let's add the code below to ```apiCall```.
 
 ```javascript
 // get value from search input field
 var keyword = $("input[name='keyword']").val();
-var url = **Add url here!**
+var url = "'**Add url here!**'"
 $.ajax({
   url: url,
   type: "GET",
   dataType: "json"
 }).done ( function(response){
-  console.log(response.Search);
+  console.log(response);
   // call movie function below to append movie titles
   movie(response);
 }).fail ( function (){
@@ -75,7 +75,7 @@ $.ajax({
   console.log("Something happens");
 })
 ```
-Nothing actually happens still, right? But take a look at the syntax, it's pretty straight forward! All we need to do is pass in a url that leads to an API source, the type of request ('GET'), and the type of data to be returned ('json' - JavaScript Object Notation).  Then, the request takes three promises, ```.done```, ```.fail```,```.always```.  These return functions based on the outcome of the request.  ```.done``` will run if the request is successful.  ```.fail``` will run if it fails, and ```.always``` runs in both circumstances, as it allows you to trigger a following action regardless of the outcome. You will notice though, that we haven't included an actual url! Most API urls are fairly similar, but there are often subtle differences.  Let's go to the OMDB api page, http://www.omdbapi.com/, and add in the url.
+The syntax here is pretty straight forward! Though, nothing actually works in the browser still. All we need to do is pass in a url that leads to an API source, the type of request ('GET'), and the type of data to be returned ('json' - JavaScript Object Notation).  The request takes three promises, ```.done```, ```.fail```,```.always```.  These each return functions based on the outcome of the request.  ```.done``` will run if the request is successful.  ```.fail``` will run if it fails. ```.always``` runs in both circumstances, as it allows you to trigger a following action regardless of the outcome. You will notice though, that we haven't included an actual url. Many API urls are fairly similar, with a few subtle differences.  Let's go to the OMDB api page, http://www.omdbapi.com/, and add in the url.
 
 ```javascript
 "https://www.omdbapi.com/?s="+keyword
@@ -98,7 +98,8 @@ for (var i=0;i<response.Search.length;i++) {
 We have a movie search!
 
 ## You Do (2-3 mins)
-Take a few minutes to play around with the url.  Go back to the OMDB site and see what else you can do.  Specifically, is there a better way to search by an actual title? Can you change the url and the corresponding code in the ```movie``` function to return the information for "Star Wars: The Force Awakens"?
+Right now our search only returns movie titles,, a picture, and the year it was released.  
+Take a few minutes to play around with the url.  Go back to the OMDB site and see what else you can do.  Specifically, is there a better way to search by an actual title (try "Star Wars: The Force Awakens") and return more information? Note, you will have to change the code in the ```movie``` function to return the information to the browser as well.
 
 **hint, instead of "searching" in the url, try finding the movie "title"**
 
@@ -116,6 +117,12 @@ Try re-doing this exercise, but with the Giphy api source!
   - Consider the use of external APIs
   - Build a basic app that makes use of an external API
   - Understand how to manipulate the returned data and create different requests
-* What is a good use of APIs?
-* How do the data differ between url types in this example?
+* What is a good use of external APIs?
+* What are a couple different types of url requests one can make (using OMDB as an example)?
 * What other ways are there to make API requests?
+
+
+## Resources
+
+* https://www.getpostman.com/
+* http://www.programmableweb.com/apis
