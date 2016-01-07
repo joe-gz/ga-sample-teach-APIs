@@ -17,7 +17,7 @@ var apiCall = function() {
     type: "GET",
     dataType: "json"
   }).done ( function(response){
-    console.log(response.Search);
+    console.log(response);
     // call movie function below to append movie titles
     movie(response);
   }).fail ( function (){
