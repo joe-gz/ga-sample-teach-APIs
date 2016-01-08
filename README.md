@@ -1,4 +1,4 @@
-# APIs
+# Connecting to External APIs Using AJAX
 
 ## Learning Objectives
 
