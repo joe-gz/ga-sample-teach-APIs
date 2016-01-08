@@ -19,9 +19,6 @@ As developers, we can create our own APIs, connect to external APIs, or both!
 
 * https://developers.google.com/maps/?hl=en
 * http://www.brewerydb.com/developers
-* http://espn.go.com/apis/devcenter/
-- Oh wait, forget that last one :(
-  Some companies choose to keep their data private!
 
 ## Using an External API with jQuery
 
@@ -77,8 +74,8 @@ All we need to do now is append the data to the browser.  Adding the below to ``
 We have a movie search!
 
 ## You Do (2-3 mins)
-Right now our search only returns movie titles, a and picture.  
-Take a couple minutes to explore the returned data and add something else to the browser. What's the plot? IMDB rating?
+Right now our search only returns movie titles, and a picture.  
+Take a couple minutes to explore the data returned to the console and add something else to the browser. What's the movie about? Does it have a high rating?
 
 ## Bonus
 
@@ -88,6 +85,9 @@ Try re-doing this exercise, but with the Giphy api source!
 **Note, this API takes an API key**
 
 ## Wrap-up Questions/Discussion
+
+* Some companies choose to keep their data private!
+- http://espn.go.com/apis/devcenter/
 
 * What is a good use of external APIs?
 * What are the promises we use in an AJAX request?
