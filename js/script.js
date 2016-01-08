@@ -10,9 +10,11 @@ $(document).ready( function() {
 var apiCall = function() {
   console.log('clicked');
   // add code here to make the AJAX request!
+
 }
 
 
 var movie = function(response) {
   // add code here to append data to the body!
+  
 }
