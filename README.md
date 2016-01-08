@@ -86,13 +86,11 @@ Try re-doing this exercise, but with the Giphy api source!
 
 ## Wrap-up Questions/Discussion
 
-* Some companies choose to keep their data private!
-- http://espn.go.com/apis/devcenter/
+* Some companies choose to keep their data private! (http://espn.go.com/apis/devcenter/)
 
 * What is a good use of external APIs?
 * What are the promises we use in an AJAX request?
 * What other ways are there to make API requests?
-
 
 ## Resources
 
