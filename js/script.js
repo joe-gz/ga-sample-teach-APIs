@@ -11,7 +11,7 @@ var apiCall = function() {
   console.log('clicked');
   // add code here to make the AJAX request!
   var keyword = $("input[name='keyword']").val();
-  var url = "https://www.omdbapi.com/?s="+keyword
+  var url = "https://www.omdbapi.com/?t="+keyword
   $.ajax({
     url: url,
     type: "GET",
@@ -30,10 +30,7 @@ var apiCall = function() {
 
 var movie = function(response) {
   // add code here to append data to the body!
-  for (var i=0;i<response.Search.length;i++) {
-    // append movie titles to body
-    $('body').append("<div class = movie-title></div>")
-    $('.movie-title').append("<p>"+response.Search[i].Title+"</p>")
-    $('.movie-title').append("<img src = '"+response.Search[i].Poster+"'>")
-  }
+  $('body').append("<div class = movie-title></div>")
+  $('.movie-title').append("<p>"+response.Title+"</p>")
+  $('.movie-title').append("<img src = '"+response.Poster+"'>")
 }
