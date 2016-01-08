@@ -34,7 +34,11 @@ We are going to use jQuery here, as it provides a library to make an "AJAX" (Asy
 ## We Do
 **Let's get this set up**
 
-As you can see, we have a couple empty functions right now. ```apiCall``` will be the function through which we create the AJAX request, while ```movie``` will be used to append the returned data to the browser. So, how do we go about setting up the AJAX request? Let's add the code below to ```apiCall```.
+As you can see, we have a couple empty functions right now. ```apiCall``` will be the function through which we create the AJAX request, while ```movie``` will be used to append the returned data to the browser. So, how do we go about setting up the AJAX request? First, Let's see where we need to go to make the request.
+Let's go to the OMDB api page, http://www.omdbapi.com/.  You can see that they provide a link to make "data requests". Let's play around with it..
+
+
+Now that we have the url, let's add the code below to ```apiCall```.
 
 ```javascript
 // get value from search input field
@@ -56,8 +60,6 @@ $.ajax({
 ```
 The syntax here is pretty straight forward! All we need to do is pass in a url that leads to an API source, the type of request ('GET'), and the type of data to be returned ('json' - JavaScript Object Notation).
 The request takes three promises, ```.done```, ```.fail```,```.always```.  These each return functions based on the outcome of the request.  ```.done``` will run if the request is successful.  ```.fail``` will run if it fails. ```.always``` runs in both circumstances, as it allows you to trigger a following action regardless of the outcome.
-
-But wait, where did we get that URL from? Let's go to the OMDB api page, http://www.omdbapi.com/.
 
 Let's now try searching for "Star Wars: The Force Awakens" and see what shows up in the console.  It's an object! But where is that coming from exactly?
 The JSON file returned by OMDB returns an object containing all of our data, which we can parse through and print to the page.
